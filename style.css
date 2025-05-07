@@ -435,3 +435,32 @@ section {
     transform: translate(3px, 3px);
     box-shadow: 0px 0px var(--main-color);
   }
+
+
+/* Stopwatch */
+
+#timer {
+    width: 25%;
+    margin: auto;
+    background-color: black;
+    color: limegreen;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  #labels {
+    width: 25%;
+    margin: auto;
+    margin-top: -30px;
+    padding: 15px;
+    z-index: 2;
+    color: limegreen;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  #controls {
+    margin-left:150px;
+    margin-top: 30px;
+  }
