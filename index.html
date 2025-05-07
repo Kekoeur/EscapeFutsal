@@ -5,26 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - Escape Game</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
 </head>
 <body>
-    <h1>Bienvenue dans l'Escape Game</h1>
-    <p>Choisissez une énigme :</p>
+    <nav>
+        <div class="home-container">
+            <a href="./index.html" class="user-profile">
+                <div class="user-profile-inner">
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 1024 1024"
+                    stroke-width="0"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    class="icon"
+                    >
+                    <path
+                        d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
+                    ></path>
+                    </svg>
+                    <p>Accueil</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="login-container">
+            <a href="./pages/login.html" class="user-profile">
+                <div class="user-profile-inner">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g data-name="Layer 2" id="Layer_2">
+                            <path d="m15.626 11.769a6 6 0 1 0 -7.252 0 9.008 9.008 0 0 0 -5.374 8.231 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 9.008 9.008 0 0 0 -5.374-8.231zm-7.626-4.769a4 4 0 1 1 4 4 4 4 0 0 1 -4-4zm10 14h-12a1 1 0 0 1 -1-1 7 7 0 0 1 14 0 1 1 0 0 1 -1 1z"></path>
+                        </g>
+                    </svg>
+                    <p>Log In</p>
+                </div>
+            </a>
+        </div>
+    </nav>
 
-    <a href="./login.html">🔐 Login</a>
-    <a href="./puzzle.html">🧩 Enigme Puzzle</a>
-    <a href="./sliderPuzzle.html">🎲 Enigme Puzzle Slide</a>
-    <a href="./wordle.html">🔤 Enigme Wordle</a>
-    <a href="./color.html">🎨 Enigme Couleur</a>
-    <a href="./scrambleword.html">🔀 Enigme mots mélangés</a>
-    <a href="./fillTheGap.html">✍️ Texte à trous</a>
-    <a href="./code.html">🔐 Code</a>
-    <a href="./motMele.html">🔎 Mots mêlés</a>
+    <h1>Bienvenue dans l'Escape Game</h1>
+    <p style="text-align: center;">Choisissez une énigme :</p>
+
+    <div class="buttons-container">
+        <a href="./pages/puzzle.html" class="button-link">
+            <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+            <span class="button-text">🧩 Enigme Puzzle</span>
+        </a>
+        <a href="./pages/sliderPuzzle.html" class="button-link">
+            <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+            <span class="button-text">🎲 Enigme Puzzle Slide</span>
+        </a>
+        <a href="./pages/wordle.html" class="button-link">
+            <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+            <span class="button-text">🔤 Enigme Wordle</span>
+        </a>
+        <a href="./pages/color.html" class="button-link">
+            <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+            <span class="button-text">🎨 Enigme Couleur</span>
+        </a>
+        <a href="./pages/scrambleword.html" class="button-link">
+            <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+            <span class="button-text">🔀 Enigme mots mélangés</span>
+        </a>
+        <a href="./pages/fillTheGap.html" class="button-link">
+            <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+            <span class="button-text">✍️ Texte à trous</span>
+        </a>
+        <a href="./pages/code.html" class="button-link">
+            <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+            <span class="button-text">🔐 Code</span>
+        </a>
+        <a href="./pages/crypto.html" class="button-link">
+            <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+            <span class="button-text">🔣 Cryptogramme</span>
+        </a>
+        <a href="./pages/motMele.html" class="button-link">
+            <span class="circle" aria-hidden="true"><span class="icon arrow"></span></span>
+            <span class="button-text">🔎 Mots mêlés</span>
+        </a>
+    </div>
+
+    <div class="timer-container">
+        Temps écoulé depuis votre première visite : <span id="timer">0</span> minute(s)
+    </div>
 
     <script>
-        // Sauvegarde de l'heure de première visite
+        // Stocker l'heure de première visite si elle n'existe pas
         if (!localStorage.getItem("firstVisit")) {
             localStorage.setItem("firstVisit", new Date().getTime());
         }
+
+        // Mettre à jour le timer toutes les secondes
+        setInterval(() => {
+            const firstVisit = parseInt(localStorage.getItem("firstVisit"), 10);
+            const now = new Date().getTime();
+            const minutesPassed = Math.floor((now - firstVisit) / (1000 * 60));
+            document.getElementById("timer").textContent = minutesPassed;
+        }, 1000);
     </script>
 </body>
 </html>

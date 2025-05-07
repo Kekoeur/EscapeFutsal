@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Affichage Séquentiel</title>
+  <script src="./../Color.js"></script>
+  <link rel="stylesheet" href="./../style.css">
+</head>
+<body>
+    <nav>
+        <div class="home-container">
+            <a href="./../index.html" class="user-profile">
+                <div class="user-profile-inner">
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 1024 1024"
+                    stroke-width="0"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    class="icon"
+                    >
+                    <path
+                        d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
+                    ></path>
+                    </svg>
+                    <p>Accueil</p>
+                </div>
+            </a>
+        </div>
+    
+        <div class="login-container">
+            <a href="./login.html" class="user-profile">
+                <div class="user-profile-inner">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g data-name="Layer 2" id="Layer_2">
+                            <path d="m15.626 11.769a6 6 0 1 0 -7.252 0 9.008 9.008 0 0 0 -5.374 8.231 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 9.008 9.008 0 0 0 -5.374-8.231zm-7.626-4.769a4 4 0 1 1 4 4 4 4 0 0 1 -4-4zm10 14h-12a1 1 0 0 1 -1-1 7 7 0 0 1 14 0 1 1 0 0 1 -1 1z"></path>
+                        </g>
+                    </svg>
+                    <p>Log In</p>
+                </div>
+            </a>
+        </div>
+    </nav>
+  <section class="display-color">
+    <div id="display">Chargement...</div>
+  </section>
+ 
+
+  <script>
+    const seqStorage = sessionStorage.getItem('inputSequence');
+  
+    if (!seqStorage) {
+      document.getElementById('display').textContent = 'Aucune donnée reçue.';
+      throw new Error('Aucune donnée reçue.');
+    }
+  
+    const sequence = getColorFromLetters(seqStorage); // provient de Color.js
+    const display = document.getElementById('display');
+    let index = 0;
+    let intervalId;
+  
+    function updateDisplay() {
+      const current = sequence[index];
+  
+      // Nettoyer classes et couleurs
+      document.body.className = '';
+      document.body.style.color = (current.color === 'Jaune' || current.color === 'Cyan') ? 'black' : 'white';
+      document.body.classList.add(current.color);
+      display.textContent = current.position;
+  
+      index++;
+  
+      if (index >= sequence.length) {
+        clearInterval(intervalId);
+        showRestartButton();
+      }
+    }
+  
+    function showRestartButton() {
+    document.body.className = '';
+    document.body.classList.add("Blanc");
+    display.textContent = "";
+
+    const btn = document.createElement('button');
+    btn.type = "button";
+    btn.className = "restart-button";
+
+    const spanText = document.createElement('span');
+    spanText.className = "button__text";
+    spanText.textContent = "Relancer";
+
+    const spanIcon = document.createElement('span');
+    spanIcon.className = "button__icon";
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "svg");
+    svg.setAttribute("height", "48");
+    svg.setAttribute("viewBox", "0 0 48 48");
+    svg.setAttribute("width", "48");
+
+    const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path1.setAttribute("d", "M35.3 12.7c-2.89-2.9-6.88-4.7-11.3-4.7-8.84 0-15.98 7.16-15.98 16s7.14 16 15.98 16c7.45 0 13.69-5.1 15.46-12h-4.16c-1.65 4.66-6.07 8-11.3 8-6.63 0-12-5.37-12-12s5.37-12 12-12c3.31 0 6.28 1.38 8.45 3.55l-6.45 6.45h14v-14l-4.7 4.7z");
+
+    const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path2.setAttribute("d", "M0 0h48v48h-48z");
+    path2.setAttribute("fill", "none");
+
+    svg.appendChild(path1);
+    svg.appendChild(path2);
+    spanIcon.appendChild(svg);
+
+    btn.appendChild(spanText);
+    btn.appendChild(spanIcon);
+
+    btn.onclick = () => {
+        index = 0;
+        btn.remove();
+        updateDisplay();
+        intervalId = setInterval(updateDisplay, 2000);
+    };
+
+    display.appendChild(btn);
+}
+
+  
+    // Lancer la première étape
+    updateDisplay();
+    intervalId = setInterval(updateDisplay, 2000);
+  </script>
+  
+</body>
+</html>

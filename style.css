@@ -1,41 +1,66 @@
+:root {
+    --main-background: #ededed;
+    --complementary-main: red;
+    --op-main-bg: #9c9c9c77;
+    --main-foreground: #171717;
+    --op-main-fg: #171717b0;
+    --secondary-background: #312e81;
+    --complementary-secondary: black;
+    --op-secondary-bg: #312e81b0;
+    --secondary-foreground: #ffffff;
+    --op-secondary-fg: #ffffffb0;
+    --alternative-color: #EDC951;
+    --gradient-secondary: linear-gradient(45deg, var(--complementary-secondary), 25%, var(--secondary-background));
+    --gradient-main: linear-gradient(45deg, var(--complementary-main), 25%, var(--main-background));
+}
+
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+    max-height: 99vh;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     font-family: sans-serif;
-    font-size: 48px;
-    color: white;
     transition: background-color 0.5s;
+    display: flex;
 }
 
-body {
-    font-family: sans-serif;
-    padding: 20px;
+a {
+    all: unset;
 }
 
 button {
-    font-size: 20px;
     margin: 10px 5px;
     padding: 10px 20px;
     cursor: pointer;
 }
 
-.mot-container {
-    margin-bottom: 20px;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
 }
 
-.input-field {
-    font-size: 18px;
-    padding: 5px;
-    width: 300px;
+h1 {
+    text-align: center;
+    margin: 20px 0;
 }
 
-.message {
-    margin-top: 5px;
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+    gap: 10px;
+}
+
+.timer-container {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
     font-weight: bold;
 }
 
@@ -54,3 +79,359 @@ button {
     position: absolute;
     top: 10px;
 }
+
+section {
+    height: 100%;
+}
+
+/* BUTTTON */ 
+
+.button-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    min-height: 3rem;
+}
+
+.button-link .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    left: 0;
+    width: 3rem;
+    height: 100%;
+    background: var(--gradient-secondary);
+    border-radius: 1.625rem;
+    z-index: 0;
+}
+
+.button-link .circle .icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem; 
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-link .circle .icon.arrow {
+            width: 1.125rem;
+            height: 0.125rem;
+            background: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+}
+.button-link .circle .icon.arrow::before {
+    content: "";
+    position: absolute;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid var(--secondary-foreground);
+    border-right: 0.125rem solid  var(--secondary-foreground);
+    transform: rotate(45deg);
+}
+
+.button-link .button-text {
+    position: relative;
+    z-index: 1;
+    color: var(--secondary-background);
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0 2rem 0 4rem;
+    padding: 0;
+}
+
+.button-link:hover .circle {
+    width: 100%;
+}
+.button-link:hover .circle .icon.arrow {
+    background: var(--secondary-foreground);
+    transform: translate(1rem, 0);
+}
+.button-link:hover .circle .icon.arrow::before {
+    left: .5rem; /* Supprimer si pb avec la flèches */
+    top: -0.25rem; /* Supprimer si pb avec la pointes de la flèche */
+}
+
+.button-link:hover .button-text {
+    color: var(--secondary-foreground);
+}
+
+/* Log in button */
+
+.user-profile {
+    width: 131px;
+    height: 51px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    background: linear-gradient(
+      to bottom right,
+      #2e8eff 0%,
+      rgba(46, 142, 255, 0) 30%
+    );
+    background-color: rgba(46, 142, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .user-profile:hover,
+  .user-profile:focus {
+    background-color: rgba(46, 142, 255, 0.7);
+    box-shadow: 0 0 10px rgba(46, 142, 255, 0.5);
+    outline: none;
+  }
+  
+  .user-profile-inner {
+    width: 127px;
+    height: 47px;
+    border-radius: 13px;
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .user-profile-inner svg {
+    width: 27px;
+    height: 27px;
+    fill: #fff;
+  }
+  
+/* Go to button */
+
+.go-to {
+    --primary-color: #645bff;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+    margin: auto;
+  }
+  
+.go-to .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .go-to .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+  }
+  
+  .go-to .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+  
+  .go-to:hover {
+    background-color: var(--hover-color);
+  }
+  
+  .go-to:hover .arrow {
+    background: var(--secondary-color);
+  }
+  
+  .go-to:hover .arrow:before {
+    right: 0;
+  }
+
+/* Color form */
+
+.form-color-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.form-color-container > div {
+    margin: 20px 0;
+    width: 80%;
+}
+
+.mot-container {
+    position: relative;
+    height: 110px;
+    padding: 20px;
+    background-color: #FFF;
+    border-radius: 4px;
+    color: #333;
+    box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
+  }
+  
+  .mot-container:after {
+    position: absolute;
+    content: "";
+    right: -10px;
+    bottom: 21px;
+    width: 0;
+    height: 0;
+    border-left: 0px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #1a044e;
+  }
+  
+  .mot-container .validate-btn {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin: 0;
+  }
+  
+  .mot-container input {
+    border: none;
+    border-bottom: 1px solid #d4d4d4;
+    padding: 10px;
+    width: 82%;
+    background: transparent;
+    transition: all .25s ease;
+  }
+  .mot-container .message{
+    position: absolute;
+    bottom: 15px;
+    font-weight: bold;
+  }
+  .mot-container input:focus {
+    outline: none;
+    border-bottom: 1px solid #0d095e;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 'sans-serif';
+  }
+  
+  .mot-container .validate-btn {
+    position: absolute;
+    border-radius: 30px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #0f0092;
+    color: #FFF;
+    padding: 12px 25px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    right: -10px;
+    bottom: -20px;
+    cursor: pointer;
+    transition: all .25s ease;
+    box-shadow: -5px 6px 20px 0px rgba(26, 26, 26, 0.4);
+  }
+  
+  .mot-container .validate-btn:hover {
+    background-color: #07013d;
+    box-shadow: -5px 6px 20px 0px rgba(88, 88, 88, 0.569);
+  }
+
+/* Display color */
+
+.display-color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-color #display {
+    font-size: 5rem;
+}
+
+/* Restart button */
+
+.restart-button {
+    --main-focus: #2d8cf0;
+    --font-color: #dedede;
+    --bg-color-sub: #222;
+    --bg-color: #323232;
+    --main-color: #dedede;
+    position: relative;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0;
+  }
+  
+  .restart-button, .button__icon, .button__text {
+    transition: all 0.3s;
+  }
+  
+  .restart-button .button__text {
+    transform: translateX(33px);
+    color: var(--font-color);
+    font-weight: 600;
+  }
+  
+  .restart-button .button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: var(--bg-color-sub);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .restart-button .svg {
+    width: 20px;
+    fill: var(--main-color);
+  }
+  
+  .restart-button:hover {
+    background: var(--bg-color);
+  }
+  
+  .restart-button:hover .button__text {
+    color: transparent;
+  }
+  
+  .restart-button:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+  }
+  
+  .restart-button:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px var(--main-color);
+  }
