@@ -464,3 +464,15 @@ section {
     margin-left:150px;
     margin-top: 30px;
   }
+
+  .index {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .index > div {
+    margin: auto;
+  }

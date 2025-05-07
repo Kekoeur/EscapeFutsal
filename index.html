@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escape Game</title>
     <script src="./stopwatch.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button onclick="launchEscape()">Commencer</button>
+    <section class="index">
+        <div class="home-container">
+            <a onclick="launchEscape()" class="user-profile">
+                <div class="user-profile-inner">
+                    <p>Commencer</p>
+                </div>
+            </a>
+        </div>
+    </section>
 
     <script>
         function launchEscape(){

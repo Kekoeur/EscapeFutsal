@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Connexion Escape Game</title>
+  <link rel="stylesheet" href="./../style.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -57,6 +58,30 @@
 </head>
 <body>
 
+  <nav>
+    <div class="home-container">
+        <a href="./../home.html" class="user-profile">
+            <div class="user-profile-inner">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 1024 1024"
+                stroke-width="0"
+                fill="currentColor"
+                stroke="currentColor"
+                class="icon"
+                >
+                <path
+                    d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
+                ></path>
+                </svg>
+                <p>Accueil</p>
+            </div>
+        </a>
+    </div>
+</nav>
+
 <div class="container">
   <h2>Connexion</h2>
   <input type="text" id="username" placeholder="Nom d'utilisateur">
@@ -77,8 +102,8 @@
     const username = document.getElementById('username').value.trim().toLowerCase();
     const password = document.getElementById('password').value.trim().toLowerCase();
 
-    const validUsername = "diabolettes";
-    const validPassword = "victoire2025";
+    const validUsername = "diabolette";
+    const validPassword = "victoirefinale";
 
     if (username === validUsername && password === validPassword) {
       document.getElementById('successModal').style.display = 'flex';
@@ -89,102 +114,9 @@
 
   function closeModal() {
     document.getElementById('successModal').style.display = 'none';
+    window.location.href = "./../index.html"
   }
 </script>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Connexion</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #111;
-      color: white;
-      text-align: center;
-      padding-top: 50px;
-    }
-    input {
-      padding: 10px;
-      margin: 10px;
-      font-size: 16px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .modal-content {
-      background: white;
-      color: black;
-      padding: 2rem;
-      border-radius: 8px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Connexion</h1>
-  <input type="text" id="username" placeholder="Nom d'utilisateur">
-  <input type="password" id="password" placeholder="Mot de passe">
-  <br>
-  <button onclick="login()">Se connecter</button>
-
-  <!-- Modales -->
-  <div id="modal-ok" class="modal">
-    <div class="modal-content">
-      <p>🎯 Félicitations ! Vous êtes dans les temps.</p>
-      <button onclick="closeModal()">Fermer</button>
-    </div>
-  </div>
-
-  <div id="modal-late" class="modal">
-    <div class="modal-content">
-      <p>⏰ Trop tard... Vous avez dépassé les 30 minutes !</p>
-      <button onclick="closeModal()">Fermer</button>
-    </div>
-  </div>
-
-  <script>
-    function login() {
-      const user = document.getElementById("username").value.toLowerCase();
-      const pass = document.getElementById("password").value.toLowerCase();
-
-      const correctUser = "joueuse";
-      const correctPass = "diabolettes";
-
-      if (user === correctUser && pass === correctPass) {
-        const startTime = parseInt(localStorage.getItem("firstVisit"));
-        const now = new Date().getTime();
-        const elapsed = now - startTime;
-
-        if (elapsed < 30 * 60 * 1000) {
-          document.getElementById("modal-ok").style.display = "flex";
-        } else {
-          document.getElementById("modal-late").style.display = "flex";
-        }
-      } else {
-        alert("Nom d'utilisateur ou mot de passe incorrect.");
-      }
-    }
-
-    function closeModal() {
-      document.getElementById("modal-ok").style.display = "none";
-      document.getElementById("modal-late").style.display = "none";
-    }
-  </script>
 </body>
 </html>
