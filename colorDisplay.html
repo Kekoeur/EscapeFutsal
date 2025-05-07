@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Affichage Séquentiel</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="Color.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="./index.html" class="btn-menu">Menu</a>
+    <a href="./color.html" class="btn-menu">Retour</a>
+  </nav>
+  <div id="display">Chargement...</div>
+
+  <script>
+    const seqStorage = sessionStorage.getItem('inputSequence');
+  
+    if (!seqStorage) {
+      document.getElementById('display').textContent = 'Aucune donnée reçue.';
+      throw new Error('Aucune donnée reçue.');
+    }
+  
+    const sequence = getColorFromLetters(seqStorage); // provient de Color.js
+    const display = document.getElementById('display');
+    let index = 0;
+    let intervalId;
+  
+    function updateDisplay() {
+      const current = sequence[index];
+  
+      // Nettoyer classes et couleurs
+      document.body.className = '';
+      document.body.style.color = (current.color === 'Jaune' || current.color === 'Cyan') ? 'black' : 'white';
+      document.body.classList.add(current.color);
+      display.textContent = current.position;
+  
+      index++;
+  
+      if (index >= sequence.length) {
+        clearInterval(intervalId);
+        showRestartButton();
+      }
+    }
+  
+    function showRestartButton() {
+      document.body.className = '';
+      document.body.classList.add("Blanc")
+      display.textContent= ""
+      const btn = document.createElement('button');
+      btn.textContent = "Recommencer";
+      btn.style.padding = "10px 20px";
+      btn.style.fontSize = "20px";
+      btn.onclick = () => {
+        index = 0;
+        btn.remove();
+        updateDisplay();
+        intervalId = setInterval(updateDisplay, 2000);
+      };
+      display.appendChild(btn);
+    }
+  
+    // Lancer la première étape
+    updateDisplay();
+    intervalId = setInterval(updateDisplay, 2000);
+  </script>
+  
+</body>
+</html>

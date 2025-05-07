@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Escape Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Bienvenue dans l'Escape Game</h1>
+    <p>Choisissez une énigme :</p>
+
+    <a href="./login.html">🔐 Login</a>
+    <a href="./puzzle.html">🧩 Enigme Puzzle</a>
+    <a href="./sliderPuzzle.html">🎲 Enigme Puzzle Slide</a>
+    <a href="./wordle.html">🔤 Enigme Wordle</a>
+    <a href="./color.html">🎨 Enigme Couleur</a>
+    <a href="./scrambleword.html">🔀 Enigme mots mélangés</a>
+    <a href="./fillTheGap.html">✍️ Texte à trous</a>
+    <a href="./code.html">🔐 Code</a>
+    <a href="./motMele.html">🔎 Mots mêlés</a>
+
+    <script>
+        // Sauvegarde de l'heure de première visite
+        if (!localStorage.getItem("firstVisit")) {
+            localStorage.setItem("firstVisit", new Date().getTime());
+        }
+    </script>
+</body>
+</html>

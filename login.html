@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion Escape Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: #222;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #000;
+    }
+    input {
+      display: block;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      width: 100%;
+      border-radius: 4px;
+      border: none;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .modal-content {
+      background: white;
+      color: black;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Connexion</h2>
+  <input type="text" id="username" placeholder="Nom d'utilisateur">
+  <input type="password" id="password" placeholder="Mot de passe">
+  <button onclick="checkLogin()">Valider</button>
+</div>
+
+<div class="modal" id="successModal">
+  <div class="modal-content">
+    <h2>🎉 Félicitations !</h2>
+    <p>Vous avez débloqué l'accès !</p>
+    <button onclick="closeModal()">Fermer</button>
+  </div>
+</div>
+
+<script>
+  function checkLogin() {
+    const username = document.getElementById('username').value.trim().toLowerCase();
+    const password = document.getElementById('password').value.trim().toLowerCase();
+
+    const validUsername = "diabolettes";
+    const validPassword = "victoire2025";
+
+    if (username === validUsername && password === validPassword) {
+      document.getElementById('successModal').style.display = 'flex';
+    } else {
+      alert("Nom d'utilisateur ou mot de passe incorrect.");
+    }
+  }
+
+  function closeModal() {
+    document.getElementById('successModal').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connexion</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: white;
+      text-align: center;
+      padding-top: 50px;
+    }
+    input {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: white;
+      color: black;
+      padding: 2rem;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Connexion</h1>
+  <input type="text" id="username" placeholder="Nom d'utilisateur">
+  <input type="password" id="password" placeholder="Mot de passe">
+  <br>
+  <button onclick="login()">Se connecter</button>
+
+  <!-- Modales -->
+  <div id="modal-ok" class="modal">
+    <div class="modal-content">
+      <p>🎯 Félicitations ! Vous êtes dans les temps.</p>
+      <button onclick="closeModal()">Fermer</button>
+    </div>
+  </div>
+
+  <div id="modal-late" class="modal">
+    <div class="modal-content">
+      <p>⏰ Trop tard... Vous avez dépassé les 30 minutes !</p>
+      <button onclick="closeModal()">Fermer</button>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value.toLowerCase();
+      const pass = document.getElementById("password").value.toLowerCase();
+
+      const correctUser = "joueuse";
+      const correctPass = "diabolettes";
+
+      if (user === correctUser && pass === correctPass) {
+        const startTime = parseInt(localStorage.getItem("firstVisit"));
+        const now = new Date().getTime();
+        const elapsed = now - startTime;
+
+        if (elapsed < 30 * 60 * 1000) {
+          document.getElementById("modal-ok").style.display = "flex";
+        } else {
+          document.getElementById("modal-late").style.display = "flex";
+        }
+      } else {
+        alert("Nom d'utilisateur ou mot de passe incorrect.");
+      }
+    }
+
+    function closeModal() {
+      document.getElementById("modal-ok").style.display = "none";
+      document.getElementById("modal-late").style.display = "none";
+    }
+  </script>
+</body>
+</html>

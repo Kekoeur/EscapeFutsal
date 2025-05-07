@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Générateur JSON Association</title>
+</head>
+<body>
+  <h1>Générateur d'association aléatoire</h1>
+  <button onclick="generateJSON()">Générer le fichier JSON</button>
+
+  <script>
+    function assignRandomLetters(array) {
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ '.split('');
+
+      if (array.length > alphabet.length) {
+        throw new Error("Le tableau contient plus d'éléments que de lettres dans l'alphabet.");
+      }
+
+      // Mélanger les lettres de l'alphabet
+      const shuffled = alphabet.sort(() => Math.random() - 0.5);
+      console.log("Lettres mélangées :", shuffled);
+
+      // Associer chaque élément à une lettre
+      const result = {};
+      array.forEach((item, index) => {
+        result[item] = shuffled[index];
+      });
+
+      console.log("Association générée :", result);
+      return result;
+    }
+
+    function generateJSON() {
+      const mots = [
+        "RRR", "RRV", "RRB", "RVR", "RVV", "RVB", "RBR", "RBV", "RBB",
+        "VRR", "VRV", "VRB", "VVR", "VVV", "VVB", "VBR", "VBV", "VBB",
+        "BRR", "BRV", "BRB", "BVR", "BVV", "BVB", "BBR", "BBV", "BBB"
+      ];
+
+      const association = assignRandomLetters(mots);
+
+      const jsonStr = JSON.stringify(association, null, 2);
+      const blob = new Blob([jsonStr], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "association.json";
+      link.click();
+
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

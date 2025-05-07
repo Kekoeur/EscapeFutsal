@@ -1,0 +1,56 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 48px;
+    color: white;
+    transition: background-color 0.5s;
+}
+
+body {
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+button {
+    font-size: 20px;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.mot-container {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    font-size: 18px;
+    padding: 5px;
+    width: 300px;
+}
+
+.message {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.valid { color: green; }
+.invalid { color: red; }
+
+.Blanc { background-color:  white;}
+.Rouge { background-color: red; }
+.Vert { background-color: green; }
+.Bleu { background-color: blue; }
+.Jaune { background-color: yellow; color: black; }
+.Magenta { background-color: magenta; }
+.Cyan { background-color: cyan; color: black; }
+
+.btn-menu {
+    position: absolute;
+    top: 10px;
+}
