@@ -476,3 +476,19 @@ section {
   .index > div {
     margin: auto;
   }
+
+  .mot-container .button-container {
+    display: flex;
+  }
+
+  .section-image {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .image {
+    width: 80%;
+    height: auto;
+    align-self: center;
+  }

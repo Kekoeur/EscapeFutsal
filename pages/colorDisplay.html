@@ -50,19 +50,29 @@
 
   <script>
     const seqStorage = sessionStorage.getItem('inputSequence');
+    const difficultyStorage = sessionStorage.getItem('difficulty');
+    console.log(difficultyStorage)
   
     if (!seqStorage) {
       document.getElementById('display').textContent = 'Aucune donnée reçue.';
       throw new Error('Aucune donnée reçue.');
     }
   
-    const sequence = getColorFromLetters(seqStorage); // provient de Color.js
+    let sequence;
+    if (difficultyStorage === "1") {
+      sequence = getColorFromLetters(seqStorage); // provient de Color.js
+    }
+    else {
+      console.log("ici")
+      sequence = getColorFromLettersEasy(seqStorage);
+    }
     const display = document.getElementById('display');
     let index = 0;
     let intervalId;
   
     function updateDisplay() {
       const current = sequence[index];
+      console.log(current)
   
       // Nettoyer classes et couleurs
       document.body.className = '';
@@ -74,7 +84,7 @@
   
       if (index >= sequence.length) {
         clearInterval(intervalId);
-        showRestartButton();
+        setTimeout(showRestartButton, 2000);
       }
     }
   

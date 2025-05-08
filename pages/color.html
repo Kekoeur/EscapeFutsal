@@ -47,11 +47,20 @@
   <section class="form-color-container">
     <div>
       <div class="mot-container" data-sequence="BVVRVBVRR">
-        <button class="go-to" onclick="launchSequence('BVVRVBVRR')">
-          Afficher Mot 1
-          <div class="arrow-wrapper">
-            <div class="arrow"></div>
-          </div></button>
+        <div class="button-container">
+          <button class="go-to" onclick="launchSequence('BVVRVBVRR', 1)">
+            Afficher Mot 1 Hard
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
+          </button>
+          <button class="go-to" onclick="launchSequence('BVVRVBVRR', 2)">
+            Afficher Mot 1 Easy
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
+          </button>
+        </div>
         <div class="form">
           <input type="text" class="input-field" placeholder="Entrez le mot pour Mot 1">
           <button class="validate-btn">Valider</button>
@@ -62,12 +71,20 @@
 
     <div>
       <div class="mot-container" data-sequence="RBRBBRRRBVVVVRR">
-        <button class="go-to" onclick="launchSequence('RBRBBRRRBVVVVRR')">
-          Afficher Mot 2
-          <div class="arrow-wrapper">
-            <div class="arrow"></div>
-          </div>
-        </button>
+        <div class="button-container">
+          <button class="go-to" onclick="launchSequence('RBRBBRRRBVVVVRR', 1)">
+            Afficher Mot 2 Hard
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
+          </button>
+          <button class="go-to" onclick="launchSequence('RBRBBRRRBVVVVRR', 2)">
+            Afficher Mot 2 Easy
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
+          </button>
+        </div>
         <div>
           <input type="text" class="input-field" placeholder="Entrez le mot pour Mot 2">
           <button class="validate-btn">Valider</button>
@@ -78,12 +95,20 @@
 
     <div>
       <div class="mot-container" data-sequence="VBVVVRBVV">
-        <button class="go-to" onclick="launchSequence('VBVVVRBVV')">
-          Afficher Mot 3
-          <div class="arrow-wrapper">
-            <div class="arrow"></div>
-          </div>
-        </button>
+        <div class="button-container">
+          <button class="go-to" onclick="launchSequence('VBVVVRBVV', 1)">
+            Afficher Mot 3 Hard
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
+          </button>
+          <button class="go-to" onclick="launchSequence('VBVVVRBVV', 2)">
+            Afficher Mot 3 Easy
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
+          </button>
+        </div>
         <div>
           <input type="text" class="input-field" placeholder="Entrez le mot pour Mot 3">
           <button class="validate-btn">Valider</button>
@@ -94,12 +119,20 @@
 
     <div>
       <div class="mot-container" data-sequence="VBBRBBBVVVRBBRR">
-        <button class="go-to" onclick="launchSequence('VBBRBBBVVVRBBRR')">
-          Afficher Mot 4
-          <div class="arrow-wrapper">
-            <div class="arrow"></div>
-          </div>
-        </button>
+        <div class="button-container">
+          <button class="go-to" onclick="launchSequence('VBBRBBBVVVRBBRR', 1)">
+            Afficher Mot 4 Hard
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
+          </button>
+          <button class="go-to" onclick="launchSequence('VBBRBBBVVVRBBRR', 2)">
+            Afficher Mot 4 Easy
+            <div class="arrow-wrapper">
+              <div class="arrow"></div>
+            </div>
+          </button>
+        </div>
         <div>
           <input type="text" class="input-field" placeholder="Entrez le mot pour Mot 3">
           <button class="validate-btn">Valider</button>
@@ -109,10 +142,15 @@
     </div>
   <section>
 
+  <section class="section-image">
+    <img class="image" src="./../image/couleur.png" alt="couleur">
+  </section>
+
   <script src="./../Color.js"></script>
   <script>
-    function launchSequence(word) {
+    function launchSequence(word, difficulty) {
       sessionStorage.setItem('inputSequence', word);
+      sessionStorage.setItem('difficulty', difficulty)
       window.location.href = 'colorDisplay.html';
     }
 

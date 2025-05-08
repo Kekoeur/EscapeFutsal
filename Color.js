@@ -81,8 +81,31 @@ function getColorFromLetters(letters) {
             }
         }
     }
+    console.log(results)
     return results
 }
+
+function getColorFromLettersEasy(letters) {
+    console.log(letters)
+    const chars = letters.toUpperCase().split('');
+  
+    // Vérifier que toutes les lettres sont valides
+    if (!chars.every(c => ['R', 'V', 'B'].includes(c))) {
+      throw new Error("Entrée invalide : utiliser uniquement les lettres R, V ou B.");
+    }
+  
+    // Associer chaque lettre à une couleur
+    return chars.map((char, i) => {
+      let color;
+      switch (char) {
+        case 'R': color = 'Rouge'; break;
+        case 'V': color = 'Vert'; break;
+        case 'B': color = 'Bleu'; break;
+      }
+      return { position: `${(i % 3) + 1}`, color };
+    });
+  }
+  
 
 function reverseAssociation(association) {
     const reversed = {};
